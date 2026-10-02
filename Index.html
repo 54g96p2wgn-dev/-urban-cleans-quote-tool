@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123c2d">
+<title>Urban Cleans Quote Tool</title>
+<style>
+:root{--green:#123c2d;--green2:#1f5a43;--ink:#151817;--muted:#68716d;--line:#dfe5e1;--bg:#f5f7f5;--card:#fff;--warn:#8a5b10;--good:#17633d;--bad:#9a3030}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}header{background:var(--green);color:#fff;padding:18px 16px 16px;position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #0002}.brand{max-width:920px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand h1{font-size:19px;margin:0}.brand p{font-size:12px;margin:3px 0 0;opacity:.8}.pill{border:1px solid #ffffff55;background:#ffffff14;color:#fff;border-radius:999px;padding:9px 12px;font-weight:700;font-size:12px;min-height:40px}.wrap{max-width:920px;margin:auto;padding:14px 12px 80px}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#e7ece9;border-radius:12px;padding:4px;margin-bottom:12px}.tab{border:0;background:transparent;padding:11px;border-radius:9px;font-weight:800;color:#53605a}.tab.active{background:#fff;color:var(--green);box-shadow:0 1px 5px #0001}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px;margin:11px 0}.card h2{font-size:16px;margin:0 0 12px}.sub{font-size:12px;color:var(--muted);margin:-5px 0 12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.full{grid-column:1/-1}label{display:block;font-size:12px;font-weight:700;color:#3d4742}input,select,textarea{width:100%;margin-top:5px;border:1px solid #cfd8d3;border-radius:10px;background:#fff;color:#111;padding:12px;font-size:16px;min-height:45px}textarea{min-height:82px;resize:vertical}.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.check{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:10px;font-size:13px;font-weight:650}.check input{width:19px;height:19px;min-height:auto;margin:0;flex:none}.check small{display:block;color:var(--muted);font-weight:500;margin-top:2px}.quoteBox{background:var(--green);color:#fff;border-radius:16px;padding:18px}.quoteBox .eyebrow{font-size:12px;opacity:.75}.quoteBox .price{font-size:42px;font-weight:900;letter-spacing:-1px;margin:3px 0}.quoteBox .desc{font-size:13px;opacity:.88;line-height:1.45}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}.metric{background:#f3f6f4;border:1px solid var(--line);border-radius:11px;padding:10px}.metric span{display:block;font-size:10px;color:var(--muted);margin-bottom:4px}.metric strong{font-size:15px}.good{color:var(--good)}.bad{color:var(--bad)}.notice{font-size:12px;line-height:1.45;border-left:4px solid #c59a45;background:#fff9ed;padding:10px 11px;border-radius:8px;color:#664918}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}button{cursor:pointer}.btn{border:0;border-radius:10px;padding:12px 14px;min-height:44px;font-weight:800;font-size:14px}.primary{background:var(--green);color:#fff}.secondary{background:#edf2ef;color:var(--green);border:1px solid #d5dfd9}.danger{background:#fff0f0;color:#8d2d2d;border:1px solid #efd1d1}.hidden{display:none!important}.summary{white-space:pre-wrap;font-size:13px;line-height:1.5;background:#f7f9f8;border:1px solid var(--line);padding:12px;border-radius:10px}.ownerLock{text-align:center;padding:20px 8px}.ownerLock input{max-width:180px;text-align:center;letter-spacing:5px}.settingsNote{font-size:11px;color:var(--muted);margin-top:8px}.sectionLine{border:0;border-top:1px solid var(--line);margin:14px 0}.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:10px;font-weight:800;background:#e9f2ed;color:var(--green)}
+@media(max-width:650px){.grid,.grid3,.checks{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.brand p{display:none}.quoteBox .price{font-size:38px}}
+@media print{header,.tabs,.noPrint,.ownerOnly{display:none!important}body{background:#fff}.wrap{padding:0}.card{border:0;padding:0}.quoteBox{background:#fff;color:#000;border:2px solid #222}.summary{border:1px solid #aaa}.clientPrint{display:block!important}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div><h1>URBAN CLEANS NJ LLC</h1><p>Internal Pricing & Quote Tool</p></div><button id="lockBtn" class="pill" type="button">Owner View 🔒</button></div></header>
+<div class="wrap">
+  <div class="tabs noPrint"><button class="tab active" data-tab="quote">Build Quote</button><button class="tab" data-tab="settings">Pricing Settings</button></div>
+
+  <main id="quoteTab">
+    <section class="card">
+      <h2>1. Property & service</h2>
+      <div class="grid">
+        <label>Client / property label<input id="client" placeholder="Optional"></label>
+        <label>Service type<select id="service"><option value="maintenance">Maintenance</option><option value="standard">Standard Clean</option><option value="deep">Deep Clean</option><option value="turnover">Turnover / Move-Out</option><option value="post">Post-Construction / Final Clean</option></select></label>
+        <label>Square footage<input id="sqft" type="number" min="100" step="50" value="1200"></label>
+        <label>Condition<select id="condition"><option value="0.9">Light / maintained</option><option value="1" selected>Average</option><option value="1.2">Heavy buildup</option><option value="1.4">Very heavy / neglected</option></select></label>
+        <label>Bedrooms<input id="beds" type="number" min="0" step="1" value="2"></label>
+        <label>Bathrooms<input id="baths" type="number" min="0" step="0.5" value="1"></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Actual scope</h2><p class="sub">The client can choose a package, but the property condition and requested work still determine the labor.</p>
+      <div class="checks">
+        <label class="check"><input type="checkbox" data-addon="fridge"><span>Inside refrigerator<small id="lab-fridge"></small></span></label>
+        <label class="check"><input type="checkbox" data-addon="oven"><span>Inside oven<small id="lab-oven"></small></span></label>
+        <label class="check"><input type="checkbox" data-addon="baseboards"><span>Detailed baseboards<small id="lab-baseboards"></small></span></label>
+        <label class="check"><input type="checkbox" data-addon="windows"><span>Interior windows / tracks<small id="lab-windows"></small></span></label>
+        <label class="check"><input type="checkbox" data-addon="cabinets"><span>Inside cabinets<small id="lab-cabinets"></small></span></label>
+        <label class="check"><input type="checkbox" data-addon="pethair"><span>Heavy pet hair<small id="lab-pethair"></small></span></label>
+        <label class="check"><input type="checkbox" data-addon="walls"><span>Wall washing<small id="lab-walls"></small></span></label>
+        <label class="check"><input type="checkbox" data-addon="organization"><span>Light organization<small id="lab-organization"></small></span></label>
+      </div>
+      <label style="margin-top:11px">Scope notes<textarea id="notes" placeholder="Example: heavy grease on cabinets, glass wall, vacant unit, construction dust..."></textarea></label>
+    </section>
+
+    <section class="card ownerOnly hidden" id="ownerLabor">
+      <h2>3. Owner margin protection <span class="badge">PRIVATE</span></h2>
+      <p class="sub">Count your own time as a cost too. Otherwise a job can look profitable while only paying you for cleaning.</p>
+      <div class="grid3">
+        <label>Your labor hours<input id="ownerHours" type="number" min="0" step="0.5" value="3"></label>
+        <label>Your labor value / hr<input id="ownerRate" type="number" min="0" step="1" value="35"></label>
+        <label>Contractor pay total<input id="contractorPay" type="number" min="0" step="5" value="100"></label>
+        <label>Supplies / consumables<input id="supplies" type="number" min="0" step="5" value="20"></label>
+        <label>Travel / parking / tolls<input id="travel" type="number" min="0" step="5" value="0"></label>
+        <label>Target gross margin %<input id="margin" type="number" min="5" max="80" step="1" value="40"></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="quoteBox">
+        <div class="eyebrow">RECOMMENDED CLIENT QUOTE</div><div class="price" id="quote">$0</div>
+        <div class="desc" id="driver"></div>
+      </div>
+      <div class="metrics ownerOnly hidden">
+        <div class="metric"><span>Size + scope</span><strong id="scopePrice">$0</strong></div>
+        <div class="metric"><span>True job cost</span><strong id="jobCost">$0</strong></div>
+        <div class="metric"><span>Margin floor</span><strong id="marginFloor">$0</strong></div>
+        <div class="metric"><span>Projected profit</span><strong id="profit">$0</strong></div>
+      </div>
+      <div id="marginAlert" class="notice ownerOnly hidden" style="margin-top:10px"></div>
+    </section>
+
+    <section class="card clientPrint">
+      <h2>Client-facing quote</h2>
+      <div id="clientSummary" class="summary"></div>
+      <div class="actions noPrint"><button id="copyBtn" class="btn primary" type="button">Copy Quote Text</button><button id="printBtn" class="btn secondary" type="button">Print / Save PDF</button><button id="resetBtn" class="btn secondary" type="button">New Quote</button></div>
+    </section>
+  </main>
+
+  <main id="settingsTab" class="hidden noPrint">
+    <section class="card">
+      <h2>Pricing settings <span class="badge">OWNER ONLY</span></h2>
+      <p class="sub">These are internal starter assumptions. Adjust them as Urban Cleans collects more completed-job data.</p>
+      <div id="settingsLocked" class="ownerLock"><p>Unlock Owner View to change pricing assumptions.</p><button id="settingsUnlock" class="btn primary" type="button">Unlock Owner View</button></div>
+      <div id="settingsBody" class="hidden">
+        <div class="grid3" id="serviceSettings"></div>
+        <hr class="sectionLine">
+        <h2>Scope add-ons</h2><div class="grid3" id="addonSettings"></div>
+        <div class="actions"><button id="saveSettings" class="btn primary" type="button">Save Settings</button><button id="restoreSettings" class="btn danger" type="button">Restore Starter Settings</button></div>
+        <p class="settingsNote">Settings are stored only in this browser on this device. Clearing browser/site data can reset them.</p>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Privacy PIN</h2><p class="sub">This PIN only prevents casual viewing of your internal numbers on your device. It is not bank-level security.</p>
+      <div class="grid"><label>New 4-digit PIN<input id="newPin" inputmode="numeric" maxlength="4" placeholder="4 digits"></label><div style="align-self:end"><button id="changePin" class="btn secondary" type="button">Change PIN</button></div></div>
+    </section>
+  </main>
+</div>
+<script>
+(()=>{
+const DEFAULTS={services:{maintenance:{label:'Maintenance Cleaning',rate:.12,min:180},standard:{label:'Standard Cleaning',rate:.15,min:200},deep:{label:'Deep Cleaning',rate:.22,min:350},turnover:{label:'Turnover / Move-Out Cleaning',rate:.20,min:350},post:{label:'Post-Construction / Final Cleaning',rate:.30,min:1000}},addons:{fridge:35,oven:40,baseboards:50,windows:60,cabinets:60,pethair:40,walls:225,organization:50},extraBath:35};
+let cfg=loadCfg(),owner=false;
+const $=id=>document.getElementById(id), money=n=>'$'+Math.round(n).toLocaleString('en-US'), round5=n=>Math.ceil(n/5)*5;
+function loadCfg(){try{return JSON.parse(localStorage.getItem('ucPricingCfg'))||structuredClone(DEFAULTS)}catch(e){return JSON.parse(JSON.stringify(DEFAULTS))}}
+function saveCfg(){localStorage.setItem('ucPricingCfg',JSON.stringify(cfg))}
+function pin(){return localStorage.getItem('ucOwnerPin')||'2468'}
+function n(id,fallback=0){const v=parseFloat($(id).value);return Number.isFinite(v)?Math.max(0,v):fallback}
+function scopeTotal(){const s=cfg.services[$('service').value],sq=Math.max(100,n('sqft',100)),cond=n('condition',1),b=n('baths',1);let a=0;document.querySelectorAll('[data-addon]').forEach(x=>{if(x.checked)a+=cfg.addons[x.dataset.addon]||0});return sq*s.rate*cond+Math.max(0,b-1)*cfg.extraBath+a}
+function calc(){const s=cfg.services[$('service').value],scope=scopeTotal(),own=n('ownerHours')*n('ownerRate'),cost=own+n('contractorPay')+n('supplies')+n('travel'),m=Math.min(.8,Math.max(.05,n('margin',40)/100)),floor=cost/(1-m),quote=round5(Math.max(s.min,scope,floor));let why='service minimum';if(scope>=s.min&&scope>=floor)why='property size, condition and scope';else if(floor>=s.min&&floor>=scope)why='labor costs and target margin';$('quote').textContent=money(quote);$('scopePrice').textContent=money(scope);$('jobCost').textContent=money(cost);$('marginFloor').textContent=money(floor);$('profit').textContent=money(quote-cost);$('profit').className=(quote-cost)>=0?'good':'bad';$('driver').textContent='Protected by '+why+'. Final pricing should be confirmed from photos or walkthrough when condition is uncertain.';const actual=quote?((quote-cost)/quote*100):0;$('marginAlert').textContent='At this quote, projected gross margin is about '+Math.round(actual)+'% after owner labor value, contractor pay, supplies and travel entered above.';buildSummary(quote,s);}
+function selectedScope(){const names={fridge:'inside refrigerator',oven:'inside oven',baseboards:'detailed baseboards',windows:'interior windows/tracks',cabinets:'inside cabinets',pethair:'heavy pet-hair removal',walls:'wall washing',organization:'light organization'};return [...document.querySelectorAll('[data-addon]:checked')].map(x=>names[x.dataset.addon])}
+function buildSummary(q,s){const c=$('client').value.trim(),sq=Math.round(n('sqft',0)),beds=n('beds',0),baths=n('baths',0),items=selectedScope(),notes=$('notes').value.trim();let t='URBAN CLEANS NJ LLC\n'+s.label+' Quote: '+money(q)+'\n';if(c)t+='Property: '+c+'\n';t+='Approx. '+sq.toLocaleString('en-US')+' sq ft | '+beds+' BR | '+baths+' BA\n';if(items.length)t+='Included scope add-ons: '+items.join(', ')+'.\n';if(notes)t+='Scope notes: '+notes+'\n';t+='\nFinal price is based on the stated property size, condition and agreed scope. Additional work or materially different conditions may require a revised quote.';$('clientSummary').textContent=t}
+function renderLabels(){Object.keys(cfg.addons).forEach(k=>{const el=$('lab-'+k);if(el)el.textContent='Internal scope allowance '+money(cfg.addons[k])});}
+function setOwner(on){owner=on;document.querySelectorAll('.ownerOnly').forEach(x=>x.classList.toggle('hidden',!on));$('lockBtn').textContent=on?'Owner View 🔓':'Owner View 🔒';$('settingsLocked').classList.toggle('hidden',on);$('settingsBody').classList.toggle('hidden',!on);calc()}
+function unlock(){const entered=prompt('Enter your 4-digit Owner PIN. Starter PIN is 2468 until you change it.');if(entered===null)return;if(entered===pin())setOwner(true);else alert('Incorrect PIN.')}
+$('lockBtn').addEventListener('click',()=>owner?setOwner(false):unlock());$('settingsUnlock').addEventListener('click',unlock);
+document.querySelectorAll('input,select,textarea').forEach(el=>{if(!['newPin'].includes(el.id))el.addEventListener(el.type==='checkbox'?'change':'input',calc)});
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const q=btn.dataset.tab==='quote';$('quoteTab').classList.toggle('hidden',!q);$('settingsTab').classList.toggle('hidden',q)}));
+$('copyBtn').addEventListener('click',async()=>{const txt=$('clientSummary').textContent;try{await navigator.clipboard.writeText(txt);$('copyBtn').textContent='Copied ✓';setTimeout(()=>$('copyBtn').textContent='Copy Quote Text',1400)}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}});$('printBtn').addEventListener('click',()=>window.print());
+$('resetBtn').addEventListener('click',()=>{if(!confirm('Clear this quote and start a new one?'))return;$('client').value='';$('service').value='standard';$('sqft').value=1200;$('condition').value=1;$('beds').value=2;$('baths').value=1;$('notes').value='';document.querySelectorAll('[data-addon]').forEach(x=>x.checked=false);$('ownerHours').value=3;$('ownerRate').value=35;$('contractorPay').value=100;$('supplies').value=20;$('travel').value=0;$('margin').value=40;calc()});
+function renderSettings(){const ss=$('serviceSettings');ss.innerHTML='';Object.entries(cfg.services).forEach(([k,v])=>{ss.insertAdjacentHTML('beforeend',`<label>${v.label} $/sq ft<input data-srate="${k}" type="number" step="0.01" value="${v.rate}"></label><label>${v.label} minimum<input data-smin="${k}" type="number" step="5" value="${v.min}"></label>`)});const as=$('addonSettings');as.innerHTML='';Object.entries(cfg.addons).forEach(([k,v])=>as.insertAdjacentHTML('beforeend',`<label>${k.replace(/([A-Z])/g,' $1')}<input data-aval="${k}" type="number" step="5" value="${v}"></label>`));}
+$('saveSettings').addEventListener('click',()=>{document.querySelectorAll('[data-srate]').forEach(x=>cfg.services[x.dataset.srate].rate=Math.max(.01,parseFloat(x.value)||.01));document.querySelectorAll('[data-smin]').forEach(x=>cfg.services[x.dataset.smin].min=Math.max(0,parseFloat(x.value)||0));document.querySelectorAll('[data-aval]').forEach(x=>cfg.addons[x.dataset.aval]=Math.max(0,parseFloat(x.value)||0));saveCfg();renderLabels();calc();alert('Pricing settings saved on this device.')});
+$('restoreSettings').addEventListener('click',()=>{if(!confirm('Restore the starter pricing assumptions?'))return;cfg=JSON.parse(JSON.stringify(DEFAULTS));saveCfg();renderSettings();renderLabels();calc()});
+$('changePin').addEventListener('click',()=>{if(!owner){alert('Unlock Owner View first.');return}const p=$('newPin').value.trim();if(!/^\d{4}$/.test(p)){alert('Use exactly 4 digits.');return}localStorage.setItem('ucOwnerPin',p);$('newPin').value='';alert('Owner PIN changed.')});
+renderSettings();renderLabels();setOwner(false);calc();
+})();
+</script>
+</body>
+</html>
